@@ -1,12 +1,11 @@
 package com.food.model;
 
-
 import java.util.List;
 
-public interface FoodDAOinterface {
+public interface FoodDAOInterface {
     void insert(FoodVO food);
     void update(FoodVO food);
-    void delete(int foodId);
-    FoodVO findByPrimaryKey(int foodId);
+    void delete(Integer foodId);
+    FoodVO findByPrimaryKey(Integer foodId);
     List<FoodVO> getAll();
 }

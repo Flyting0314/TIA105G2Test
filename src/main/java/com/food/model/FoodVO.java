@@ -1,6 +1,5 @@
 package com.food.model;
 
-
 import java.sql.Timestamp;
 
 public class FoodVO {
