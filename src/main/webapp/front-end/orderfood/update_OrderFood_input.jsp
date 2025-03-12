@@ -58,9 +58,9 @@ th, td {
 				<h3>訂單資料修改 - update_OrderFood_input.jsp</h3>
 				<h4>
 					<a
-						href="/TIA105G2/front-end/orderfood/select_page_for_orderfood.jsp"><img
-						src="/TIA105G2/resources/images/back1.gif" width="100" height="32"
-						border="0">回首頁</a>
+						href="${pageContext.request.contextPath}/front-end/orderfood/select_page_for_orderfood.jsp"><img
+						src="${pageContext.request.contextPath}/resources/images/back1.gif"
+						width="100" height="32" border="0">回首頁</a>
 				</h4>
 			</td>
 		</tr>
@@ -79,12 +79,13 @@ th, td {
 		</ul>
 	</c:if>
 
-	<FORM METHOD="post" ACTION="/TIA105G2/OrderFood" name="form1">
-			<table>
-<!-- 			<tr> -->
-<!-- 				<td>訂單ID:<font color=red><b>*</b></font></td> -->
-<%-- 				<td><%=ofVO.getOrderId()%></td> --%>
-<!-- 			</tr> -->
+	<FORM METHOD="post"
+		ACTION="${pageContext.request.contextPath}/OrderFood" name="form1">
+		<table>
+			<!-- 			<tr> -->
+			<!-- 				<td>訂單ID:<font color=red><b>*</b></font></td> -->
+			<%-- 				<td><%=ofVO.getOrderId()%></td> --%>
+			<!-- 			</tr> -->
 			<tr>
 				<td>店家會員ID:</td>
 				<td><input type="TEXT" name="storeId"
@@ -98,12 +99,12 @@ th, td {
 			<tr>
 				<td>評分:</td>
 				<td><select name="rate">
-            <option value="1" <%= ofVO.getRate() == 1 ? "selected" : "" %>>1</option>
-            <option value="2" <%= ofVO.getRate() == 2 ? "selected" : "" %>>2</option>
-            <option value="3" <%= ofVO.getRate() == 3 ? "selected" : "" %>>3</option>
-            <option value="4" <%= ofVO.getRate() == 4 ? "selected" : "" %>>4</option>
-            <option value="5" <%= ofVO.getRate() == 5 ? "selected" : "" %>>5</option>
-        </select></td>
+						<option value="1" <%=ofVO.getRate() == 1 ? "selected" : ""%>>1</option>
+						<option value="2" <%=ofVO.getRate() == 2 ? "selected" : ""%>>2</option>
+						<option value="3" <%=ofVO.getRate() == 3 ? "selected" : ""%>>3</option>
+						<option value="4" <%=ofVO.getRate() == 4 ? "selected" : ""%>>4</option>
+						<option value="5" <%=ofVO.getRate() == 5 ? "selected" : ""%>>5</option>
+				</select></td>
 			</tr>
 			<tr>
 				<td>備註:</td>
@@ -113,15 +114,19 @@ th, td {
 			<tr>
 				<td>訂單狀態:</td>
 				<td><select name="serveStat">
-						<option value="0" <%= "0".equals(String.valueOf(ofVO.getServeStat())) ? "selected" : "" %>>0</option>
-						<option value="1" <%= "1".equals(String.valueOf(ofVO.getServeStat())) ? "selected" : "" %>>1</option>
+						<option value="0"
+							<%="0".equals(String.valueOf(ofVO.getServeStat())) ? "selected" : ""%>>0</option>
+						<option value="1"
+							<%="1".equals(String.valueOf(ofVO.getServeStat())) ? "selected" : ""%>>1</option>
 				</select></td>
 			</tr>
 			<tr>
 				<td>取餐狀態:</td>
 				<td><select name="pickStat">
-						<option value="0" <%= "0".equals(String.valueOf(ofVO.getPickStat())) ? "selected" : "" %>>0</option>
-						<option value="1" <%= "1".equals(String.valueOf(ofVO.getPickStat())) ? "selected" : "" %>>1</option>
+						<option value="0"
+							<%="0".equals(String.valueOf(ofVO.getPickStat())) ? "selected" : ""%>>0</option>
+						<option value="1"
+							<%="1".equals(String.valueOf(ofVO.getPickStat())) ? "selected" : ""%>>1</option>
 				</select></td>
 			</tr>
 			<tr>
@@ -153,10 +158,11 @@ th, td {
 					value="<%=fd1%>" size="45" /></td>
 			</tr>
 		</table>
-		<br><input type="hidden" name="action" value="update"> 
-		<input type="hidden" name="orderId"
-			value="<%=(ofVO != null ? ofVO.getOrderId() : "N/A")%>"> 
-		<input type="submit" value="送出修改">
+		<br>
+		<input type="hidden" name="action" value="update"> <input
+			type="hidden" name="orderId"
+			value="<%=(ofVO != null ? ofVO.getOrderId() : "N/A")%>"> <input
+			type="submit" value="送出修改">
 	</FORM>
 </body>
 

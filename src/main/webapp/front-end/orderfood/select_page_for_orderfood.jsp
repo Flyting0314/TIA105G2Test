@@ -49,11 +49,10 @@
 </c:if>
 
 <ul>
-  <li><a href='/TIA105G2/back-end/orderfood/listAllOrderFood.jsp'>List</a> All search results <br><br></li>
-  
-  
+  <li><a href='${pageContext.request.contextPath}/back-end/orderfood/listAllOrderFood.jsp'>List</a> All search results <br><br></li>
+    
   <li>
-    <FORM METHOD="post" ACTION="/TIA105G2/OrderFood" >
+    <FORM METHOD="post" ACTION="${pageContext.request.contextPath}/OrderFood" >
         <b>請輸入訂單編號:</b>
         <input type="text" name="orderId">
         <input type="hidden" name="action" value="getOne_For_Display">
@@ -66,7 +65,7 @@
  <jsp:useBean id="ofSvc" scope="page" class="com.orderfood.model.OrderFoodService" />
 
 <li>
-   <FORM METHOD="post" ACTION="/TIA105G2/OrderFood">
+   <FORM METHOD="post" ACTION="${pageContext.request.contextPath}/OrderFood">
      <b>請選擇訂單編號:</b>
      <select size="1" name="orderId">
        <c:forEach var="ofVO" items="${ofSvc.all}">
@@ -90,7 +89,7 @@
 <h3>訂單管理</h3>
 
 <ul>
-  <li><a href='/TIA105G2/back-end/orderfood/addOrderFood.jsp'>Add:</a>Receipt details</li>
+  <li><a href='${pageContext.request.contextPath}/back-end/orderfood/addOrderFood.jsp'>Add:</a>Receipt details</li>
 </ul>
 
 </body>
