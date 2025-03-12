@@ -4,7 +4,6 @@ package com.orderdetail.model;
 import java.sql.Timestamp;
 import java.util.List;
 
-import com.food.model.FoodDAOinterface;
 import com.food.model.FoodJDBCDAO;
 import com.food.model.FoodVO;
 
