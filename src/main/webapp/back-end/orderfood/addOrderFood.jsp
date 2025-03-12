@@ -50,8 +50,8 @@
 <table id="table-1">
 	<tr><td>
 		 <h3>訂單資料新增 <br> Add OrderFood.jsp</h3></td><td>
-		 <h4><a href="/TIA105G2/front-end/orderfood/select_page_for_orderfood.jsp">
-		 <img src="/TIA105G2/resources/images/tomcat.png" width="110" height="100" border="0"><br>回首頁</a></h4>
+		 <h4><a href="${pageContext.request.contextPath}/front-end/orderfood/select_page_for_orderfood.jsp">
+		 <img src="${pageContext.request.contextPath}/resources/images/tomcat.png" width="110" height="100" border="0"><br>回首頁</a></h4>
 	</td></tr>
 </table>
 
@@ -67,7 +67,7 @@
 	</ul>
 </c:if>
 
-<FORM METHOD="post" ACTION="/TIA105G2/OrderFood" name="form1">
+<FORM METHOD="post" ACTION="${pageContext.request.contextPath}/OrderFood" name="form1">
 <table>
 	
 	<tr>

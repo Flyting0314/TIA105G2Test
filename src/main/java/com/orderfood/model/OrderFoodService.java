@@ -9,7 +9,7 @@ import com.member.model.MemberVO;
 import com.orderdetail.model.OrderDetailDAOInterface;
 import com.orderdetail.model.OrderDetailJDBCDAO;
 import com.orderdetail.model.OrderDetailVO;
-import com.store.model.StoreDAO_interface;
+import com.store.model.StoreDAOInterface;
 import com.store.model.StoreJDBCDAO;
 import com.store.model.StoreVO;
 
@@ -17,7 +17,7 @@ import com.store.model.StoreVO;
 public class OrderFoodService {
 
 	private OrderFoodDAOinterface dao;
-	private StoreDAO_interface dao1;
+	private StoreDAOInterface dao1;
 	private MemberDAOinterface dao2;
 	private OrderDetailDAOInterface dao3;
 
