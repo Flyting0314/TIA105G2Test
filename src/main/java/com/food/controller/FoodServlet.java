@@ -233,9 +233,9 @@ public class FoodServlet extends HttpServlet {
 				Part filePart = req.getPart("photo"); // 取得圖片 Part
 				String fileName = filePart.getSubmittedFileName(); // 取得檔案名稱
 
-				if (fileName != "images_uploaded/S__69812245.jpg") {
-					errorMsg.add("請選擇圖片");
-				}
+//				if (fileName != "images_uploaded/S__69812245.jpg") {
+//					errorMsg.add("請選擇圖片");
+//				}
 
 				if (fileName != null && !fileName.trim().isEmpty()) {
 					// 確保上傳目錄存在
