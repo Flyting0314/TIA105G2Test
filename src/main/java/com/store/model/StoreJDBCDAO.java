@@ -8,10 +8,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Timestamp;
+import java.util.List;
 
-public class StoreJDBCDAO implements StoreDAO_interface {
+public class StoreJDBCDAO implements StoreDAOInterface {
 	String driver = "com.mysql.cj.jdbc.Driver";
-	String url = "jdbc:mysql://localhost:3306/db4test?serverTimezone=Asia/Taipei";
+	String url = "jdbc:mysql://localhost:3306/allieatfinal_db01?serverTimezone=Asia/Taipei";
 	String userid = "root";
 	String passwd = "123456";
 	private static final String INSERT_STMT = "INSERT INTO store (name, managerName, email, password, "
@@ -52,14 +54,14 @@ public class StoreJDBCDAO implements StoreDAO_interface {
 			pstmt.setString(5, storeVO.getPhoneNum());
 			pstmt.setString(6, storeVO.getGuiNum());
 			pstmt.setString(7, storeVO.getBusinessRegNum());
-			pstmt.setDate(8, storeVO.getRegTime());
+			pstmt.setTimestamp(8, storeVO.getRegTime());
 			pstmt.setInt(9, storeVO.getPoints());
 			pstmt.setInt(10, storeVO.getAccStat());
 			pstmt.setInt(11, storeVO.getOpStat());
-			pstmt.setDate(12, storeVO.getOpTime());
-			pstmt.setDate(13, storeVO.getPickTime());
-			pstmt.setDate(14, storeVO.getLastOrder());
-			pstmt.setDate(15, storeVO.getCloseTime());
+			pstmt.setTimestamp(12, storeVO.getOpTime());
+			pstmt.setTimestamp(13, storeVO.getPickTime());
+			pstmt.setTimestamp(14, storeVO.getLastOrder());
+			pstmt.setTimestamp(15, storeVO.getCloseTime());
 			pstmt.setString(16, storeVO.getAddress());
 			pstmt.setString(17, storeVO.getCounty());
 			pstmt.setString(18, storeVO.getDistrict());
@@ -108,14 +110,14 @@ public class StoreJDBCDAO implements StoreDAO_interface {
 			pstmt.setString(5, storeVO.getPhoneNum());
 			pstmt.setString(6, storeVO.getGuiNum());
 			pstmt.setString(7, storeVO.getBusinessRegNum());
-			pstmt.setDate(8, storeVO.getRegTime());
+			pstmt.setTimestamp(8, storeVO.getRegTime());
 			pstmt.setInt(9, storeVO.getPoints());
 			pstmt.setInt(10, storeVO.getAccStat());
 			pstmt.setInt(11, storeVO.getOpStat());
-			pstmt.setDate(12, storeVO.getOpTime());
-			pstmt.setDate(13, storeVO.getPickTime());
-			pstmt.setDate(14, storeVO.getLastOrder());
-			pstmt.setDate(15, storeVO.getCloseTime());
+			pstmt.setTimestamp(12, storeVO.getOpTime());
+			pstmt.setTimestamp(13, storeVO.getPickTime());
+			pstmt.setTimestamp(14, storeVO.getLastOrder());
+			pstmt.setTimestamp(15, storeVO.getCloseTime());
 			pstmt.setString(16, storeVO.getAddress());
 			pstmt.setString(17, storeVO.getCounty());
 			pstmt.setString(18, storeVO.getDistrict());
@@ -215,14 +217,14 @@ public class StoreJDBCDAO implements StoreDAO_interface {
 				storeVO.setPhoneNum(rs.getString("phoneNum"));
 				storeVO.setGuiNum(rs.getString("guiNum"));
 				storeVO.setBusinessRegNum(rs.getString("businessRegNum"));
-				storeVO.setRegTime(rs.getDate("regTime"));
+				storeVO.setRegTime(rs.getTimestamp("regTime"));
 				storeVO.setPoints(rs.getInt("points"));
 				storeVO.setAccStat(rs.getInt("accStat"));
 				storeVO.setOpStat(rs.getInt("opStat"));
-				storeVO.setOpTime(rs.getDate("opTime"));
-				storeVO.setPickTime(rs.getDate("pickTime"));
-				storeVO.setLastOrder(rs.getDate("lastOrder"));
-				storeVO.setCloseTime(rs.getDate("closeTime"));
+				storeVO.setOpTime(rs.getTimestamp("opTime"));
+				storeVO.setPickTime(rs.getTimestamp("pickTime"));
+				storeVO.setLastOrder(rs.getTimestamp("lastOrder"));
+				storeVO.setCloseTime(rs.getTimestamp("closeTime"));
 				storeVO.setAddress(rs.getString("address"));
 				storeVO.setCounty(rs.getString("county"));
 				storeVO.setDistrict(rs.getString("district"));
@@ -282,14 +284,14 @@ public class StoreJDBCDAO implements StoreDAO_interface {
 				stVO.setPhoneNum(rs.getString("phoneNum"));
 				stVO.setGuiNum(rs.getString("guiNum"));
 				stVO.setBusinessRegNum(rs.getString("businessRegNum"));
-				stVO.setRegTime(rs.getDate("regTime"));
+				stVO.setRegTime(rs.getTimestamp("regTime"));
 				stVO.setPoints(rs.getInt("points"));
 				stVO.setAccStat(rs.getInt("accStat"));
 				stVO.setOpStat(rs.getInt("opStat"));
-				stVO.setOpTime(rs.getDate("opTime"));
-				stVO.setPickTime(rs.getDate("pickTime"));
-				stVO.setLastOrder(rs.getDate("lastOrder"));
-				stVO.setCloseTime(rs.getDate("closeTime"));
+				stVO.setOpTime(rs.getTimestamp("opTime"));
+				stVO.setPickTime(rs.getTimestamp("pickTime"));
+				stVO.setLastOrder(rs.getTimestamp("lastOrder"));
+				stVO.setCloseTime(rs.getTimestamp("closeTime"));
 				stVO.setAddress(rs.getString("address"));
 				stVO.setCounty(rs.getString("county"));
 				stVO.setDistrict(rs.getString("district"));
@@ -310,90 +312,95 @@ public class StoreJDBCDAO implements StoreDAO_interface {
 		return list;
 	}
 
-	public static void main(String[] args) {
+	
+	    public static void main(String[] args) {
 
-		Date date = new Date(System.currentTimeMillis());
-		StoreJDBCDAO dao = new StoreJDBCDAO();
-		StoreVO stVO1 = new StoreVO();
+	        Timestamp timestamp = new Timestamp(System.currentTimeMillis()); 
+	        StoreJDBCDAO dao = new StoreJDBCDAO();
+	        StoreVO stVO1 = new StoreVO();
 
-		// insert
-//		stVO1.setName("陶陶亭");
-//		stVO1.setManagerName("麥當雄");
-//		stVO1.setEmail("abcrr@god.com");
-//		stVO1.setPassword("123456");
-//		stVO1.setPhoneNum("0988888888");
-//		stVO1.setGuiNum("0800");
-//		stVO1.setBusinessRegNum("12345678");
-//		stVO1.setRegTime(date);
-//		stVO1.setPoints(100);
-//		stVO1.setAccStat(1);
-//		stVO1.setOpStat(1);
-//		stVO1.setOpTime(date);
-//		stVO1.setPickTime(date);
-//		stVO1.setLastOrder(date);
-//		stVO1.setCloseTime(date);
-//		stVO1.setAddress("台北市某某路");
-//		stVO1.setCounty("台北市");
-//		stVO1.setDistrict("大安區");
-//		stVO1.setPostalCode(106);
-//		stVO1.setStarNum(5);
-//		stVO1.setVisitorsNum(500);
-//		stVO1.setReviewed(1);
-//		dao.insert(stVO1);
+	        // Insert
+	        stVO1.setName("陶陶亭");
+	        stVO1.setManagerName("麥當雄");
+	        stVO1.setEmail("abcrr@god.com");
+	        stVO1.setPassword("123456");
+	        stVO1.setPhoneNum("0988888888");
+	        stVO1.setGuiNum("0800");
+	        stVO1.setBusinessRegNum("12345678");
+	        stVO1.setReviewed(1);
+	        stVO1.setRegTime(timestamp);  
+	        stVO1.setPoints(100);
+	        stVO1.setAccStat(1);
+	        stVO1.setOpStat(1);
+	        stVO1.setOpTime(timestamp);
+	        stVO1.setPickTime(timestamp);
+	        stVO1.setLastOrder(timestamp);
+	        stVO1.setCloseTime(timestamp);
+	        stVO1.setAddress("台北市某某路");
+	        stVO1.setCounty("台北市");
+	        stVO1.setDistrict("大安區");
+	        stVO1.setPostalCode(106);
+	        stVO1.setStarNum(5);
+	        stVO1.setVisitorsNum(500);
+	        dao.insert(stVO1);
+	        System.out.println("上傳成功");
 
 		// update
-//		stVO1.setName("好吃喔");
-//		stVO1.setManagerName("王小明");
-//		stVO1.setEmail("abc@god.com");
-//		stVO1.setPassword("123456");
-//		stVO1.setPhoneNum("0988888888");
-//		stVO1.setGuiNum("0800");
-//		stVO1.setBusinessRegNum("12345678");
-//		stVO1.setRegTime(date);
-//		stVO1.setPoints(100);
-//		stVO1.setAccStat(1);
-//		stVO1.setOpStat(1);
-//		stVO1.setOpTime(date);
-//		stVO1.setPickTime(date);
-//		stVO1.setLastOrder(date);
-//		stVO1.setCloseTime(date);
-//		stVO1.setAddress("台北市某某路");
-//		stVO1.setCounty("台北市");
-//		stVO1.setDistrict("大安區");
-//		stVO1.setPostalCode(106);
-//		stVO1.setStarNum(5);
-//		stVO1.setVisitorsNum(500);
-//		stVO1.setStoreId(3);
-//		dao.update(stVO1);
+		stVO1.setName("好吃喔");
+		stVO1.setManagerName("王小明");
+		stVO1.setEmail("abc@god.com");
+		stVO1.setPassword("123456");
+		stVO1.setPhoneNum("0988888888");
+		stVO1.setGuiNum("0800");
+		stVO1.setBusinessRegNum("12345678");
+		stVO1.setReviewed(1);
+		stVO1.setRegTime(timestamp);
+		stVO1.setPoints(100);
+		stVO1.setAccStat(1);
+		stVO1.setOpStat(1);
+		stVO1.setOpTime(timestamp);
+		stVO1.setPickTime(timestamp);
+		stVO1.setLastOrder(timestamp);
+		stVO1.setCloseTime(timestamp);
+		stVO1.setAddress("台北市某某路");
+		stVO1.setCounty("台北市");
+		stVO1.setDistrict("大安區");
+		stVO1.setPostalCode(106);
+		stVO1.setStarNum(5);
+		stVO1.setVisitorsNum(500);
+		stVO1.setStoreId(11);
+		dao.update(stVO1);
+	    System.out.println("更新成功");
 
 		// Delete
-//		dao.delete(4);
+		dao.delete(11);
+	    System.out.println("刪除成功");
 
 		// find by key
-//		StoreVO stVO2 = dao.findByPrimaryKey(5);
-//		System.out.print(stVO2.getStoreId()+ ", ");
-//		System.out.print(stVO2.getName()+ ", ");
-//		System.out.print(stVO2.getManagerName()+ ", ");
-//		System.out.print(stVO2.getEmail()+ ", ");
-//		System.out.print(stVO2.getPassword()+ ", ");
-//		System.out.print(stVO2.getPhoneNum()+ ", ");
-//		System.out.print(stVO2.getGuiNum()+ ", ");
-//		System.out.print(stVO2.getBusinessRegNum()+ ", ");
-//		System.out.print(stVO2.getRegTime()+ ", ");
-//		System.out.print(stVO2.getPoints()+ ", ");
-//		System.out.print(stVO2.getAccStat()+ ", ");
-//		System.out.print(stVO2.getOpStat()+ ", ");
-//		System.out.print(stVO2.getOpTime()+ ", ");
-//		System.out.print(stVO2.getPickTime()+ ", ");
-//		System.out.print(stVO2.getLastOrder()+ ", ");
-//		System.out.print(stVO2.getCloseTime()+ ", ");
-//		System.out.print(stVO2.getAddress()+ ", ");
-//		System.out.print(stVO2.getCounty()+ ", ");
-//		System.out.print(stVO2.getDistrict()+ ", ");
-//		System.out.print(stVO2.getPostalCode()+ ", ");
-//		System.out.print(stVO2.getStarNum()+ ", ");
-//		System.out.print(stVO2.getVisitorsNum()+", ");
-//		System.out.print(stVO2.getReviewed());
+		StoreVO stVO2 = dao.findByPrimaryKey(5);
+		System.out.print(stVO2.getStoreId()+ ", ");
+		System.out.print(stVO2.getName()+ ", ");
+		System.out.print(stVO2.getManagerName()+ ", ");
+		System.out.print(stVO2.getEmail()+ ", ");
+		System.out.print(stVO2.getPassword()+ ", ");
+		System.out.print(stVO2.getPhoneNum()+ ", ");
+		System.out.print(stVO2.getGuiNum()+ ", ");
+		System.out.print(stVO2.getBusinessRegNum()+ ", ");
+		System.out.print(stVO2.getRegTime()+ ", ");
+		System.out.print(stVO2.getPoints()+ ", ");
+		System.out.print(stVO2.getAccStat()+ ", ");
+		System.out.print(stVO2.getOpStat()+ ", ");
+		System.out.print(stVO2.getOpTime()+ ", ");
+		System.out.print(stVO2.getPickTime()+ ", ");
+		System.out.print(stVO2.getLastOrder()+ ", ");
+		System.out.print(stVO2.getCloseTime()+ ", ");
+		System.out.print(stVO2.getAddress()+ ", ");
+		System.out.print(stVO2.getCounty()+ ", ");
+		System.out.print(stVO2.getDistrict()+ ", ");
+		System.out.print(stVO2.getPostalCode()+ ", ");
+		System.out.print(stVO2.getStarNum()+ ", ");
+		System.out.print(stVO2.getVisitorsNum()+", ");
+		System.out.print(stVO2.getReviewed());
 
 //		 getAll
 		List<StoreVO> list = dao.getAll();
@@ -425,5 +432,7 @@ public class StoreJDBCDAO implements StoreDAO_interface {
 		}
 
 	}
-
 }
+
+
+
