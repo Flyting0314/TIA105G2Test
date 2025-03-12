@@ -26,15 +26,6 @@
 		<url-pattern>/food/food.do</url-pattern>
 	</servlet-mapping>
 	
-	  <servlet>
-		<servlet-name>MemberServlet</servlet-name>
-		<servlet-class>com.member.controller.MemberServlet</servlet-class>
-		<multipart-config/>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>MemberServlet</servlet-name>
-		<url-pattern>/member/member.do</url-pattern>
-	</servlet-mapping>
-	
+
 
 </web-app>
